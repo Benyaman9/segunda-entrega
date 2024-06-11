@@ -1,25 +1,36 @@
 import React, { useState } from 'react'
 
+
 export const Header = ({ allProducts, setAllProducts, total, countProducts, setCountProducts, setTotal }) => {
 
     const [active, setActive] = useState(false);
 
-    const onDeleteProduct = (product) =>{
+    const onDeleteProduct = (product) => {
         const results = allProducts.filter(item => item.id !== product.id
 
         );
         setTotal(total - product.price * product.quantity)
-            setCountProducts(countProducts - product.quantity);
+        setCountProducts(countProducts - product.quantity);
         setAllProducts(results);
     };
-const onCleanCart = () => {
-    setAllProducts([])
-    setTotal(0)
-    setCountProducts(0)
-}
+    const onCleanCart = () => {
+        setAllProducts([])
+        setTotal(0)
+        setCountProducts(0)
+    }
     return (
         <header>
             <h1>Tienda Benyaman</h1>
+
+            <nav className='nav'>
+                <ul>
+                    <li className='nav-item'>
+                        <navLink to="/categorias" activeclassname="active" className="nav-link">productos por categorias</navLink>
+
+                    </li>
+                </ul>
+
+            </nav>
 
             <div className="container-icon">
                 <div className="container-cart-icon" onClick={() => setActive(!active)}>
@@ -80,7 +91,7 @@ const onCleanCart = () => {
                                     <span className="total-pagar">${total}</span>
                                 </div>
                                 <button className='btn-clear-all' onClick={onCleanCart}>vaciar carrito</button>
-                                </>
+                            </>
                         ) : (
                             <p className="cart-empty">El carrito está vacío</
                             p>

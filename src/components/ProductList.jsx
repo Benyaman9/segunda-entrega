@@ -33,6 +33,7 @@ export const ProductList = ({ allProducts, setAllProducts, countProducts, setCou
                 <div className='info-product'>
                     <h2>{product.nameProduct}</h2>
                     <p className='price'>${product.price}</p>
+                    <p>{product.descripcion}</p>
                     <button onClick={() => onAddProduct(product)}>
                         añadir al carrito
                     </button>
